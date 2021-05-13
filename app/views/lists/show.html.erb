@@ -1,0 +1,19 @@
+<div class="container mt-5 width-200">
+  <div class="row">
+    <div class="col">
+      <h2><%= @list.name %></h2>
+    </div>
+  </div>
+   <div class="col-lg-4">
+    <h6>Add bookmark!</h6>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.input :comment %>
+        <%= f.association :movie %>
+        <%= f.submit "Create bookmark", class: "btn border mt-3" %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-between">
+      <p class= "btn border mt-3"><%= link_to "Edit list", edit_list_path(@list)%></p>
+      <p class= "btn border mt-3"><%= link_to "Back to Lists", lists_path %></p>
+    </div>
+</div>

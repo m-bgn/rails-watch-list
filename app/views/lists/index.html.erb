@@ -1,0 +1,17 @@
+<div class="container mt-5 width-200">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4 text-center">
+      <h1>All lists 📃</h1>
+
+      <ul>
+        <% @lists.each do |list| %>
+          <li class="d-flex justify-content-between">
+          <p class="text-left"><%= list.name %></p>
+          <%= link_to "See details", list_path(list), class: "btn border"%>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "Add a new list", new_list_path, class: "btn border"%>
+    </div>
+  </div>
+</div>
