@@ -28,7 +28,7 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     @list.update(list_params)
-    redirect_to lists_path(@list)
+    redirect_to list_path(@list)
   end
 
   private
