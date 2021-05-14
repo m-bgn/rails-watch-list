@@ -1,17 +1,51 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="text-left">
+    <a class="navbar-brand" href="#">
+      <%= link_to lists_path do %>
+        <i class="fas fa-film"></i>
+      <% end %>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Add a new list", new_list_path%>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.journaldugeek.com/content/uploads/2020/04/cinema.jpg);">
+  <div class="container">
+    <h1>All movie lists 📃</h1>
+    <p>Check the best movies.</p>
+  </div>
+</div>
 <div class="container mt-5 width-200">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-4 text-center">
-      <h1>All lists 📃</h1>
-
       <ul>
         <% @lists.each do |list| %>
           <li class="d-flex justify-content-between">
-          <p class="text-left"><%= list.name %></p>
-          <%= link_to "See details", list_path(list), class: "btn border"%>
+          <div class="name">
+            <p class="text-left"><%= list.name %> </p>
+          </div>
+          <div class="action">
+            <p> <%= link_to list_path(list) do %>
+              <i class="fas fa-search"></i>
+              <% end %>
+            <%= link_to lists_path, method: :delete, data: {   confirm: "Are you sure?"} do %>
+              <i class="fas fa-trash-alt"></i>
+             <% end %>
+            </p>
+          </div>
           </li>
         <% end %>
       </ul>
-      <%= link_to "Add a new list", new_list_path, class: "btn border"%>
+
     </div>
   </div>
 </div>
