@@ -2,18 +2,23 @@
   <div class="row">
     <div class="col">
       <h2><%= @list.name %></h2>
+      <ul><% @bookmarks.each do |bookmark| %>
+        <li><p><%= bookmark.movie.title %> - <%= bookmark.comment %> - <p class= "btn border"><%= link_to "Delete bookmark", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?"}%></p></p></li>
+        <% end %>
+      </ul>
     </div>
   </div>
    <div class="col-lg-4">
-    <h6>Add bookmark!</h6>
+    <%# <h6>Add bookmark!</h6>
       <%= simple_form_for [@list, @bookmark] do |f| %>
-        <%= f.input :comment %>
-        <%= f.association :movie %>
-        <%= f.submit "Create bookmark", class: "btn border mt-3" %>
-      <% end %>
+        <%#= f.input :comment %>
+        <%#= f.association :movie %>
+        <%#= f.submit "Create bookmark", class: "btn border mt-3" %>
+      <%# end %>
     </div>
     <div class="d-flex justify-content-between">
       <p class= "btn border mt-3"><%= link_to "Edit list", edit_list_path(@list)%></p>
+      <p class= "btn border mt-3"><%= link_to "Add a bookmark", new_list_bookmark_path(@list)%></p>
       <p class= "btn border mt-3"><%= link_to "Back to Lists", lists_path %></p>
     </div>
 </div>
